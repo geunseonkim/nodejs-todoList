@@ -15,13 +15,14 @@ app.use('/api', indexRouter)
 
 // const mongoURI = `mongodb://localhost:27017/todoList`
 const mongoURI = MONGODB_URI_PROD
+
 mongoose.connect(mongoURI).then(() => {
     console.log("mongoose connected")
 }).catch((err) => {
     console.log("DB connection fail", err)
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("server on 4000")
 })
 
