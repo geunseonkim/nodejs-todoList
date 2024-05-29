@@ -1,11 +1,12 @@
 const express = require("express")
 const taskController = require("../controller/task.controller")
 const router = express.Router()
+const authController = require("../controller/auth.controller")
 
 // router.post('/', (req, res) => {
 //     res.send("create task")
 // })
-router.post('/', taskController.createTask)
+router.post('/', authController.authenticate, taskController.createTask)
 
 // router.get('/', (req, res) => {
 //     res.send("get tasks")
